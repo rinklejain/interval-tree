@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define in insert
 using namespace std;
 
 struct interval{
@@ -41,12 +42,12 @@ public:
 		return node;
 	}
 
-	void insert(interval *i){
+	void in(interval *i){
 		Node *currentNode = newNode(i);
-		insert(root, currentNode);
+		in(root, currentNode);
 	}
 
-	void insert(Node *root, Node *currentNode){
+	void in(Node *root, Node *currentNode){
 		// If tree is empty
 		if (!this->root){
 			this->root = currentNode;
@@ -60,7 +61,7 @@ public:
 					root->left = currentNode;
 					currentNode->parent = root;
 				}else{
-					insert(root->left, currentNode);
+					in(root->left, currentNode);
 				}
 			}else{// Case when we go to right for insertion
 				// if right node is NULL, no need to recurse just insert it
@@ -68,7 +69,7 @@ public:
 					root->right = currentNode;
 					currentNode->parent = root;
 				}else{
-					insert(root->right, currentNode);
+					in(root->right, currentNode);
 				}
 			}
 		}
